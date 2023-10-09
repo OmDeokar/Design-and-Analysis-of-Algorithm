@@ -1,4 +1,4 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
 // Function to check if all the task can be completed by 'per_day' number of task per day
@@ -7,8 +7,8 @@ bool valid(int per_day,vector<int> task, int d)
 
 	// Variable to store days required
 	int cur_day = 0;
-	for (int index = 0; index < task.size();
-		index++) {
+	for (int index = 0; index < task.size();index++)
+	 {
 
 		int day_req
 			= ceil((double)(task[index])
@@ -18,7 +18,8 @@ bool valid(int per_day,vector<int> task, int d)
 
 		// If more days required than 'd' days so invalid
 
-		if (cur_day > d) {
+		if (cur_day > d)
+		 {
 			return false;
 		}
 	}
@@ -34,26 +35,27 @@ int minimumTask(vector<int> task, int d)
 	int left = 1;
 	int right = INT_MAX;
 
-	for (int index = 0;
-		index < task.size();
-		index++) {
+	for (int index = 0;index < task.size();index++)
+	 {
 		right = max(right, task[index]);
 	}
 
 	// Variable to store answer
 	int per_day_task = 0;
 
-	while (left <= right) {
+	while (left <= right) 
+	{
 
-		int mid = left
-				+ (right - left) / 2;
+		int mid = left+ (right - left) / 2;
 
 		// If 'mid' number of task per day
-		//if (valid(mid, task, d)) {
+		if (valid(mid, task, d)) 
+		{
 			per_day_task = mid;
 			right = mid - 1;
 		}
-		else {
+		else
+		 {
 			left = mid + 1;
 		}
 	}
